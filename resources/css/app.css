@@ -1,0 +1,157 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+[x-cloak] {
+    display: none !important;
+}
+.display-none{
+    @apply hidden;
+}
+
+.ck-content > blockquote,
+.ck-content > dl,
+.ck-content > dd,
+.ck-content > h1,
+.ck-content > h2,
+.ck-content > h3,
+.ck-content > h4,
+.ck-content > h5,
+.ck-content > h6,
+.ck-content > hr,
+.ck-content > figure,
+.ck-content > p,
+.ck-content > pre {
+    margin: revert;
+    letter-spacing: 0.1em!important;
+}
+
+.ck-content > ol,
+.ck-content > ul {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+    letter-spacing: 0.1em!important;
+}
+
+.ck-content > table {
+    border-collapse: revert;
+}
+
+.ck-content > h1,
+.ck-content > h2,
+.ck-content > h3,
+.ck-content > h4,
+.ck-content > h5,
+.ck-content > h6 {
+    font-size: revert;
+    font-weight: revert;
+}
+/*.ck-content-view{*/
+/*    max-height: 80vh;*/
+/*}*/
+/*.ck-content-view >p{*/
+/*    word-break: break-all;*/
+/*}*/
+.ck-content-view img{
+    max-height: 70vh;
+    @apply rounded-lg;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/*.ck-file-dialog-button{*/
+/*    display: none!important;*/
+/*}*/
+
+/*side lines*/
+.comments-container::before {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -40px;
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: #d1d5db;
+}
+
+/* horizontal line to the left of the comments */
+.comment-container::before {
+    position: absolute;
+    display: block;
+    top: 57px;
+    content: "";
+    width: 23px;
+    height: 3px;
+    background: #d1d5db;
+    left: -40px;
+}
+/* remove last vertical line */
+.comment-container:last-child::after {
+    position: absolute;
+    display: block;
+    top: 60px;
+    left: -40px;
+    content: "";
+    width: 3px;
+    height: calc(100% - 60px);
+    background: #e5e7eb;
+    @apply dark:bg-gray-800;
+
+}
+.ck-content > pre{
+    @apply dark:text-white;
+    @apply dark:bg-gray-800;
+    max-width: 85vw;
+    @apply text-xs;
+    border-radius: 0.5rem!important;
+    position: relative;
+    padding-top: 20px!important;
+    /*overflow-y: hidden;*/
+}
+.ck-content > pre:before{
+    content: "";
+    background-image: url("/images/code-mac.png");
+    background-size: 35px 12px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 35px;
+    height: 12px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+.ck-content a{
+    @apply sm:hover:opacity-75;
+    @apply break-all;
+}
+.ck-content a::before{
+    content: "🔗";
+    @apply text-sm;
+}
+
+/*works only on safari*/
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .ck-content > pre{
+            overflow-y: hidden;
+        }
+
+        .ck-content-view > p {
+            display: inline-block;
+        }
+        .ck-content-view > p::after{
+            content: " \A\A";
+            white-space: pre;
+        }
+
+
+    }
+}
+@supports (-webkit-touch-callout: none) {
+    .ck-content-view{
+        display: block;
+    }
+}
